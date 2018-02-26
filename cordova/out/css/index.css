@@ -1,0 +1,27 @@
+.row > * {
+	vertical-align : middle
+}
+.row {
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+.third {
+    max-width: 33%;
+}
+
+.version {
+    word-break: break-all;
+    position: absolute;
+    bottom: 5px;
+}
+
+.helpContent {
+    text-align: center
+}
+
+.addLinkTarget {
+    position: fixed;
+    right: 20px;
+    top: 0;
+}

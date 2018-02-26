@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="ru.iliago.schoolschedule" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="LocalNotification">
+        <param name="android-package" value="de.appplant.cordova.plugin.localnotification.LocalNotification" />
+    </feature>
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="BackgroundMode">
+        <param name="android-package" value="de.appplant.cordova.plugin.background.BackgroundMode" />
+    </feature>
+    <feature name="Badge">
+        <param name="android-package" value="de.appplant.cordova.plugin.badge.Badge" />
+    </feature>
+    <feature name="AppMetrica">
+        <param name="android-package" value="com.yandex.metrica.plugin.cordova.AppMetricaPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <name>Школьное расписание</name>
+    <description>
+        Расписание Лицея г. Троицка
+    </description>
+    <author email="iliakonnov@gmail.com">
+        Коннов Илья
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-intent href="market:*" />
+    <icon density="ldpi" src="res/icons/favicon36.png" />
+    <icon density="mdpi" src="res/icons/favicon48.png" />
+    <icon density="hdpi" src="res/icons/favicon72.png" />
+    <icon density="tvdpi" src="res/icons/favicon64.png" />
+    <icon density="xhdpi" src="res/icons/favicon96.png" />
+    <icon density="xxhdpi" src="res/icons/favicon144.png" />
+    <icon density="xxxhdpi" src="res/icons/favicon192.png" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="KeepRunning" value="true" />
+    <preference name="AndroidLaunchMode" value="singleInstance" />
+</widget>

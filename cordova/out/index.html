@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Microsoft -->
+	<meta name="msapplication-starturl" content="/?utm_source=web_app_manifest">
+
+	<!-- Android -->
+	<meta name="mobile-web-app-capable" content="yes">
+	<link rel="manifest" href="/manifest.json">
+	<meta name="application-name" content="Распсиание">
+
+	<!-- Apple -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="Расписание">
+	<link rel='mask-icon' href='img/favicon/favicon_black.svg' color='#FFDB58'>
+
+	<!-- Apple splashscreen (http://iosres.com/ & https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions) -->
+    <link href="img/splash/splash1125x2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image">
+    <link href="img/splash/splash1242x2208.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image">
+    <link href="img/splash/splash750x1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+    <link href="img/splash/splash640x1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+    <link href="img/splash/splash640x960.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+    <link href="img/splash/splash320x480.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
+    <link href="img/splash/splash1536x2048.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+    <link href="img/splash/splash1668x2224.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+    <link href="img/splash/splash2048x2732.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+
+	<!-- BEGIN Icons for browser, android and iOS -->
+	<link rel="icon" href="img/favicon/favicon16.png" sizes="16x16" type="image/png">
+	<link rel="apple-touch-icon" href="img/favicon/favicon16.png" sizes="16x16" type="image/png">
+
+	<link rel="icon" href="img/favicon/favicon24.png" sizes="24x24" type="image/png">
+	<link rel="apple-touch-icon" href="img/favicon/favicon24.png" sizes="24x24" type="image/png">
+
+	<link rel="icon" href="img/favicon/favicon32.png" sizes="32x32" type="image/png">
+	<link rel="apple-touch-icon" href="img/favicon/favicon32.png" sizes="32x32" type="image/png">
+
+	<link rel="icon" href="img/favicon/favicon36.png" sizes="36x36" type="image/png">
+	<link rel="apple-touch-icon" href="img/favicon/favicon36.png" sizes="36x36" type="image/png">
+
+	<link rel="icon" href="img/favicon/favicon40.png" sizes="40x40" type="image/png">
+	<link rel="apple-touch-icon" href="img/favicon/favicon40.png" sizes="40x40" type="image/png">
+
+	<link rel="icon" href="img/favicon/favicon48.png" sizes="48x48" type="image/png">
+	<link rel="apple-touch-icon" href="img/favicon/favicon48.png" sizes="48x48" type="image/png">
+
+	<link rel="icon" href="img/favicon/favicon58.png" sizes="58x58" type="image/png">
+	<link rel="apple-touch-icon" href="img/favicon/favicon58.png" sizes="58x58" type="image/png">
+
+	<link rel="icon" href="img/favicon/favicon60.png" sizes="60x60" type="image/png">
+	<link rel="apple-touch-icon" href="img/favicon/favicon60.png" sizes="60x60" type="image/png">
+
+	<link rel="icon" href="img/favicon/favicon64.png" sizes="64x64" type="image/png">
+	<link rel="apple-touch-icon" href="img/favicon/favicon64.png" sizes="64x64" type="image/png">
+
+	<link rel="icon" href="img/favicon/favicon72.png" sizes="72x72" type="image/png">
+	<link rel="apple-touch-icon" href="img/favicon/favicon72.png" sizes="72x72" type="image/png">
+
+	<link rel="icon" href="img/favicon/favicon80.png" sizes="80x80" type="image/png">
+	<link rel="apple-touch-icon" href="img/favicon/favicon80.png" sizes="80x80" type="image/png">
+
+	<link rel="icon" href="img/favicon/favicon87.png" sizes="87x87" type="image/png">
+	<link rel="apple-touch-icon" href="img/favicon/favicon87.png" sizes="87x87" type="image/png">
+
+	<link rel="icon" href="img/favicon/favicon96.png" sizes="96x96" type="image/png">
+	<link rel="apple-touch-icon" href="img/favicon/favicon96.png" sizes="96x96" type="image/png">
+
+	<link rel="icon" href="img/favicon/favicon120.png" sizes="120x120" type="image/png">
+	<link rel="apple-touch-icon" href="img/favicon/favicon120.png" sizes="120x120" type="image/png">
+
+	<link rel="icon" href="img/favicon/favicon144.png" sizes="144x144" type="image/png">
+	<link rel="apple-touch-icon" href="img/favicon/favicon144.png" sizes="144x144" type="image/png">
+
+	<link rel="icon" href="img/favicon/favicon152.png" sizes="152x152" type="image/png">
+	<link rel="apple-touch-icon" href="img/favicon/favicon152.png" sizes="152x152" type="image/png">
+
+	<link rel="icon" href="img/favicon/favicon167.png" sizes="167x167" type="image/png">
+	<link rel="apple-touch-icon" href="img/favicon/favicon167.png" sizes="167x167" type="image/png">
+
+	<link rel="icon" href="img/favicon/favicon180.png" sizes="180x180" type="image/png">
+	<link rel="apple-touch-icon" href="img/favicon/favicon180.png" sizes="180x180" type="image/png">
+
+	<link rel="icon" href="img/favicon/favicon192.png" sizes="192x192" type="image/png">
+	<link rel="apple-touch-icon" href="img/favicon/favicon192.png" sizes="192x192" type="image/png">
+
+	<link rel="icon" href="img/favicon/favicon270.png" sizes="270x270" type="image/png">
+	<link rel="apple-touch-icon" href="img/favicon/favicon270.png" sizes="270x270" type="image/png">
+
+	<link rel="icon" href="img/favicon/favicon512.png" sizes="512x512" type="image/png">
+	<link rel="apple-touch-icon" href="img/favicon/favicon512.png" sizes="512x512" type="image/png">
+
+	<link rel="icon" href="img/favicon/favicon1024.png" sizes="1024x1024" type="image/png">
+	<link rel="apple-touch-icon" href="img/favicon/favicon1024.png" sizes="1024x1024" type="image/png">
+
+	<link rel="icon" href="img/favicon/favicon.svg" sizes="any" type="image/svg">
+	<link rel="apple-touch-icon" href="img/favicon/favicon.svg" sizes="any" type="image/svg">
+	<!-- END icons for browser, android and iOS -->
+
+	<title>Расписание</title>
+	<link rel="stylesheet" href="onsenui/css/onsenui.min.css">
+	<link rel="stylesheet" href="onsenui/css/onsen-css-components.min.css">
+	<link rel="stylesheet" href="css/normalize.min.css">
+	<link rel="stylesheet" href="css/index.css">
+
+	<script src="https://d2wy8f7a9ursnm.cloudfront.net/bugsnag-3.min.js" data-apikey="d9ca4cba6b7677a2657a10c5063b0602"></script>
+
+	<script src="js/generated.cached.js"></script>
+
+	<script src="js/superstore-sync.js"></script>
+	<script src="js/awesomplete.min.js"></script>
+	<script src="cordova.js"></script>
+
+    <!--<script src="js/vue.js"></script>
+    <script src="onsenui/js/onsenui.js"></script>
+    <script src="onsenui/js/vue-onsenui.js"></script>-->
+    <script src="js/vue.min.js"></script>
+    <script src="onsenui/js/onsenui.min.js"></script>
+    <script src="onsenui/js/vue-onsenui.min.js"></script>
+
+    <script src="js/index.js"></script>
+</head>
+<body>
+    <span id="addLinkTarget" class="addLinkTarget"></span>
+    <div id="app"></div>
+    <template id="main-page">
+        <v-ons-page>
+            <v-ons-toolbar>
+                <div class="center">{{$root.title}}</div>
+            </v-ons-toolbar>
+            <div class="content" name="main">
+                <v-ons-tabbar swipeable position="auto" :tabs="tabs" :index.sync="activeIndex">
+                    <v-ons-tab id="scheduleTab" page="schedule.html" label="Расписание" icon="ion-home, material:md-home">
+                    </v-ons-tab>
+                    <v-ons-tab id="filterTab" page="filter.html" label="Фильтр" icon="ion-search, material:md-search">
+                    </v-ons-tab>
+                    <v-ons-tab id="settingsTab" page="settings.html" label="Настройки" icon="ion-ios-settings, material:md-settings">
+                    </v-ons-tab>
+                </v-ons-tabbar>
+            </div>
+        </v-ons-page>
+    </template>
+
+    <template id="schedule">
+        <v-ons-page><div class="content" name="schedule">
+            <v-ons-list v-if="$root.Filter.IsEnabled() || $root.DefaultFilter.IsEnabled()">
+                <v-ons-list-item v-for="scheduleItem in $root.findLessons()">
+                    <v-ons-row>
+                        <v-ons-col>Урок №{{scheduleItem.No}}</v-ons-col>
+                        <v-ons-col>{{scheduleItem.LessonName}}</v-ons-col>
+                    </v-ons-row>
+                    <v-ons-row>
+                        <v-ons-col>C {{scheduleItem.GetStartTime()}}</v-ons-col>
+                        <v-ons-col>{{scheduleItem.TeacherName}}</v-ons-col>
+                    </v-ons-row>
+                    <v-ons-row>
+                        <v-ons-col>До {{scheduleItem.GetEndTime()}}</v-ons-col>
+                        <v-ons-col>В {{scheduleItem.Classroom}}</v-ons-col>
+                    </v-ons-row>
+                    <v-ons-row>
+                        <v-ons-col>{{$root.daysOfWeekTranslation[scheduleItem.DayOfWeek]}}</v-ons-col>
+                        <v-ons-col>{{scheduleItem.ClassNum}}-{{scheduleItem.ClassLetter}}</v-ons-col>
+                    </v-ons-row>
+                    <v-ons-row v-if="scheduleItem.isReplace">
+                        <v-ons-col></v-ons-col>
+                        <v-ons-col>Замена</v-ons-col>
+                    </v-ons-row>
+                </v-ons-list-item>
+            </v-ons-list>
+            <h1 v-else>Нет параметров!</h1>
+            <v-ons-popover :visible.sync="$root.help == 1" :direction="$root.isIOS()? 'up' : 'down'" cancelable target="#scheduleTab" @posthide="$root.updateHelp">
+                <p class="helpContent">На этой вкладке можно изучить расписание {{$root.Filter.ClassNum}}-{{$root.Filter.ClassLetter}}</p>
+            </v-ons-popover>
+            <v-ons-alert-dialog :visible.sync="$root.help == 11" cancelable @posthide="$root.updateHelp">
+                <span slot="title">Версия для андроид</span>
+                Вы можете скачать версию для андроид. В ней есть отображение времени до урока в шторке уведомлений!
+                <template slot="footer">
+                    <div class="alert-dialog-button" @click="$root.help = 12">Отмена</div>
+                    <div class="alert-dialog-button" @click="$root.help = 13"><a target="_blank" href="/android.apk">Скачать</a></div>
+                </template>
+            </v-ons-alert-dialog>
+            <v-ons-popover cancelable :visible.sync="$root.help == 13" direction="down" target="#addLinkTarget" @posthide="$root.updateHelp">
+                <p class="helpContent">Также рекомендую закрепить ссылку на сайт на рабочем столе.</p>
+            </v-ons-popover>
+        </div></v-ons-page>
+    </template>
+
+    <template id="filter">
+        <v-ons-page><div class="content" name="filter">
+            <div class="row">
+                <label id="dayOfWeekFilterHelp">День недели:</label>
+                <v-ons-select v-model="$root.Filter['DayOfWeek']" v-if="$root.show" v-bind:disabled="!$root.Filter.IsEnabled()">
+                    <option selected :value="$root.getCurrentDayOfWeek()">Сегодня</option>
+                    <option v-for="dayOfWeek in $root.getKeys($root.daysOfWeekTranslationReverse)" :value="$root.daysOfWeekTranslationReverse[dayOfWeek]">
+                        {{dayOfWeek}}
+                    </option>
+                </v-ons-select>
+            </div>
+            <div class="row">
+                <label class="left">
+                    <v-ons-checkbox input-id="classFilterCheckbox" v-model="$root.Filter['ClassEnabled']" v-if="$root.show"></v-ons-checkbox>
+                </label>
+                <label id="classFilterHelp" for="classFilterCheckbox" class="center">
+                    Класс:
+                </label>
+                <v-ons-select :disabled="!$root.Filter['ClassEnabled']" v-model="$root.Filter['ClassNum']" v-if="$root.show">
+                    <option v-for="classNum in $root.classNums">
+                        {{classNum}}
+                    </option>
+                </v-ons-select>
+                <v-ons-select :disabled="!$root.Filter['ClassEnabled']" v-model="$root.Filter['ClassLetter']" v-if="$root.show">
+                    <option v-for="classLetter in $root.classLetters">
+                        {{classLetter}}
+                    </option>
+                </v-ons-select>
+            </div>
+            <div class="row">
+                <span class="third">
+                    <label class="left">
+                        <v-ons-checkbox input-id="teacherFilterCheckbox" v-model="$root.Filter['TeacherEnabled']" v-if="$root.show"></v-ons-checkbox>
+                    </label>
+                    <label id="teacherFilterHelp" for="teacherFilterCheckbox" class="center">
+                        Учитель:
+                    </label>
+                </span>
+                <v-ons-select class="third" v-bind:disabled="!$root.Filter['TeacherEnabled']" v-model="$root.teacherGroup" v-if="$root.show">
+                    <option v-for="group in $root.getKeys($root.teachers)">
+                        {{group}}
+                    </option>
+                </v-ons-select>
+                <v-ons-select class="third" v-bind:disabled="!$root.Filter['TeacherEnabled']" v-model="$root.Filter['TeacherName']" v-if="$root.show">
+                    <option v-for="teacherName in $root.teachers[$root.teacherGroup]">
+                        {{teacherName}}
+                    </option>
+                </v-ons-select>
+            </div>
+            <div class="row">
+                <label class="left">
+                    <v-ons-checkbox input-id="classroomFilterCheckbox" v-model="$root.Filter['ClassroomEnabled']" v-if="$root.show"></v-ons-checkbox>
+                </label>
+                <label id="classroomFilterHelp" for="classroomFilterCheckbox" class="center">
+                    Кабинет:
+                </label>
+                <v-ons-input v-bind:disabled="!$root.Filter['ClassroomEnabled']" modifier="underbar" v-model="$root.Filter['Classroom']" input-id="classroomFilterInner" v-if="$root.show"></v-ons-input>
+                <datalist id="classroomList">
+                	<!--[if IE 9]><select disabled style="display:none" class="ie9_fix"><![endif]-->
+                		<option v-for="room in $root.classrooms">{{room}}</option>
+                	<!--[if IE 9]></select><![endif]-->
+                </datalist>
+            </div>
+            <v-ons-popover :visible.sync="$root.help == 2" :direction="$root.isIOS()? 'up' : 'down'" cancelable target="#filterTab" @posthide="$root.updateHelp">
+                <p class="helpContent">На этой вкладке можно настроить фильтры расписания. Причем фильтры можно комбинировать друг с другом!</p>
+            </v-ons-popover>
+            <v-ons-popover :visible.sync="$root.help == 3" direction="down" cancelable target="#dayOfWeekFilterHelp" @posthide="$root.updateHelp">
+                <p class="helpContent">Здесь можно выбрать день недели на который будет отображаться расписание</p>
+            </v-ons-popover>
+            <v-ons-popover :visible.sync="$root.help == 4" direction="down" cancelable target="#classFilterHelp" @posthide="$root.updateHelp">
+                <p class="helpContent">Здесь можно выбрать необходимый класс, чтобы посмотреть его расписание</p>
+            </v-ons-popover>
+            <v-ons-popover :visible.sync="$root.help == 5" direction="down" cancelable target="#teacherFilterHelp" @posthide="$root.updateHelp">
+                <p class="helpContent">Здесь можно найти учителя, чтобы узнать где у него сегодня уроки</p>
+            </v-ons-popover>
+            <v-ons-popover :visible.sync="$root.help == 6" direction="down" cancelable target="#classroomFilterHelp" @posthide="$root.updateHelp">
+                <p class="helpContent">Здесь можно выбрать кабинет, чтобы найти уроки только в нём</p>
+            </v-ons-popover>
+        </div></v-ons-page>
+    </template>
+
+    <template id="settings">
+        <v-ons-page><div class="content" name="settings">
+            <div class="row">
+                <label id="myClassSettingsHelp" class="center">
+                    Мой класс:
+                </label>
+                <v-ons-select v-model="$root.DefaultFilter['ClassNum']" v-if="$root.show">
+                    <option v-for="classNum in $root.classNums">
+                        {{classNum}}
+                    </option>
+                </v-ons-select>
+                <v-ons-select v-model="$root.DefaultFilter['ClassLetter']" v-if="$root.show">
+                    <option v-for="classLetter in $root.classLetters">
+                        {{classLetter}}
+                    </option>
+                </v-ons-select>
+            </div>
+            <div class="row">
+                <label class="left">
+                    <v-ons-checkbox input-id="enableNotification" v-model="$root.enableNotification" v-if="$root.show"></v-ons-checkbox>
+                </label>
+                <label id="notificationSettingsHelp" for="enableNotification" class="center">
+                    Включить уведомление о времени уроков
+                </label>
+            </div>
+            <div class="row" v-if="$root.isMobile()">
+                <label class="left">
+                    <v-ons-checkbox v-bind:disabled="!$root.enableNotification" input-id="enableBackground" v-model="$root.enableBackground" v-if="$root.show"></v-ons-checkbox>
+                </label>
+                <label id="backgroundSettingsHelp" for="enableBackground" class="center">
+                    Работать в фоне
+                </label>
+            </div>
+            <div class="row">
+                Связаться с автором: <span class="fa fa-vk fa-fw" aria-hidden="true"></span><a href="https://vk.com/iliago">vk.com/iliago</a> или <span class="fa fa-envelope fa-fw" aria-hidden="true"></span><a href="mailto:iliakonnov@gmail.com">iliakonnov@gmail.com</a>
+            </div>
+			<div class="row version">
+				<small v-html="$root.version"></small>
+			</div>
+
+            <v-ons-popover :visible.sync="$root.help == 7" :direction="$root.isIOS()? 'up' : 'down'" cancelable target="#settingsTab" @posthide="$root.updateHelp">
+                <p class="helpContent">На этой вкладке можно настроить уведомление о времени урока</p>
+            </v-ons-popover>
+            <v-ons-popover :visible.sync="$root.help == 8" direction="down" cancelable target="#myClassSettingsHelp" @posthide="$root.updateHelp">
+                <p class="helpContent">Расписание этого класса будет использоваться для уведомлений или если не применён ни один фильтр</p>
+            </v-ons-popover>
+            <v-ons-popover :visible.sync="$root.help == 9" direction="down" cancelable target="#notificationSettingsHelp" @posthide="$root.updateHelp">
+                <p class="helpContent">Уведомление позволит узнавать сколько осталось времени до конца или начала урока, а также какой это урок и где будет</p>
+            </v-ons-popover>
+            <v-ons-popover :visible.sync="$root.help == 10" direction="down" cancelable target="#backgroundSettingsHelp" @posthide="$root.updateHelp">
+                <p class="helpContent">Если приложение будет работать в фоне, то в шторке уведомлений будет показываться та же информация, что и в приложении</p>
+            </v-ons-popover>
+		</div></v-ons-page>
+	</template>
+	<!-- Yandex.Metrika counter -->
+	<script type="text/javascript">
+	    (function (d, w, c) {
+	        (w[c] = w[c] || []).push(function() {
+	            try {
+	                w.yaCounter46830327 = new Ya.Metrika({
+	                    id:46830327,
+	                    clickmap:true,
+	                    trackLinks:true,
+	                    accurateTrackBounce:true,
+	                    webvisor:true
+	                });
+	            } catch(e) { }
+	        });
+
+	        var n = d.getElementsByTagName("script")[0],
+	            s = d.createElement("script"),
+	            f = function () { n.parentNode.insertBefore(s, n); };
+	        s.type = "text/javascript";
+	        s.async = true;
+	        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+	        if (w.opera == "[object Opera]") {
+	            d.addEventListener("DOMContentLoaded", f, false);
+	        } else { f(); }
+	    })(document, window, "yandex_metrika_callbacks");
+	</script>
+	<noscript><div><img src="https://mc.yandex.ru/watch/46830327" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+	<!-- /Yandex.Metrika counter -->
+</body> 
+</html>

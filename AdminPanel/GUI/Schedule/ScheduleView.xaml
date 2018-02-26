@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="GUI.Schedule.ScheduleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:GUI.Schedule"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="600"
+             d:DataContext="{d:DesignInstance Type=local:ScheduleViewModel, IsDesignTimeCreatable=True}">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBox Text="{Binding DatabasePath}" Margin="3" />
+            <Button Content="Сохранить" Margin="3" Command="{Binding SaveCommand}" />
+        </StackPanel>
+        <Button Content="Загрузить расписание" Margin="3" Command="{Binding UploadCommand}" />
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Установить сервис слежения за изменением расписания" Margin="3"
+                    Command="{Binding RegisterWatcherCommand}"
+                    IsEnabled="{Binding RegisterWatcherEnabled}" />
+            <Button Content="Удалить сервис слежения за изменением расписания" Margin="3"
+                    Command="{Binding UnregisterWatcherCommand}"
+                    IsEnabled="{Binding UnregisterWatcherEnabled}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Включить слежение за изменением расписания" Margin="3"
+                    Command="{Binding StartWatcherCommand}"
+                    IsEnabled="{Binding StartWatcherEnabled}" />
+            <Button Content="Выключить слежение за изменением расписания" Margin="3"
+                    Command="{Binding StopWatcherCommand}"
+                    IsEnabled="{Binding StopWatcherEnabled}" />
+        </StackPanel>
+        <ProgressBar Visibility="{Binding ProgressBarVisiblity, Mode=OneWay}" IsIndeterminate="True" />
+        <StackPanel Orientation="Horizontal">
+            <Label Content="{Binding InstalledText}" Background="{Binding InstalledColor}" />
+            <Label Content="{Binding RunningText}" Background="{Binding RunningColor}" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

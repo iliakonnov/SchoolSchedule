@@ -1,0 +1,255 @@
+﻿<Window x:Class="GUI.Replaces.EditDialog.EditDialogView"
+        x:Name="EditDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI.Replaces.EditDialog"
+        xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:command="http://www.galasoft.ch/mvvmlight"
+        mc:Ignorable="d"
+        Title="EditDialog" Height="300" Width="Auto"
+        d:DataContext="{d:DesignInstance Type=local:EditDialogViewModel, IsDesignTimeCreatable=True}"
+        local:DialogCloser.DialogResult="{Binding DialogResult}">
+    <Window.Resources>
+        <Style x:Key="DataGridColumnSeparatorStyle" TargetType="DataGridCell">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Fill="Gray" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <DataTemplate x:Key="warningTemplate">
+            <TextBlock Text="{Binding Name}">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsWarning}"
+                                         Value="True">
+                                <Setter Property="Foreground" Value="Orange" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+            <Label Content="Заменяемый учитель:" />
+            <controls:AutoCompleteBox
+                VerticalAlignment="Center"
+                ItemsSource="{Binding Teachers, Mode=OneTime}"
+                ValueMemberPath="Name"
+                SelectedItem="{Binding CurrentTeacher, Mode=TwoWay}">
+                <controls:AutoCompleteBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsWarning}"
+                                                     Value="True">
+                                            <Setter Property="Foreground" Value="Orange" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </DataTemplate>
+                </controls:AutoCompleteBox.ItemTemplate>
+            </controls:AutoCompleteBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+            <Label Content="День недели:" />
+            <TextBlock VerticalAlignment="Center" Text="{Binding DayOfWeekString, Mode=OneWay}" IsEnabled="True" />
+        </StackPanel>
+        <DataGrid
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            AutoGenerateColumns="False"
+            CanUserAddRows="False"
+            CanUserDeleteRows="False"
+            CanUserReorderColumns="True"
+            CanUserResizeRows="True"
+            CanUserSortColumns="True"
+            ItemsSource="{Binding Replace.Replaces}"
+            SelectedItem="{Binding CurrentRow}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Класс" Binding="{Binding Class.Name}" IsReadOnly="True" />
+                <DataGridTextColumn Header="№ урока" Binding="{Binding BeforeLesson.LessonNo}" IsReadOnly="True" />
+
+                <!-- Separator -->
+                <DataGridTemplateColumn MinWidth="0" Width="2"
+                                        CellStyle="{StaticResource DataGridColumnSeparatorStyle}" />
+
+                <DataGridTextColumn Header="Предмет" Binding="{Binding BeforeLesson.Subject.Name}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Учитель" Binding="{Binding BeforeLesson.Teacher.Name}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Кабинет" Binding="{Binding BeforeLesson.Classroom.Room}" IsReadOnly="True" />
+
+                <!-- Separator -->
+                <DataGridTemplateColumn Header="->" MinWidth="0" Width="2"
+                                        CellStyle="{StaticResource DataGridColumnSeparatorStyle}" />
+
+                <!-- Subject -->
+                <DataGridTemplateColumn Header="Предмет" IsReadOnly="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding AfterLesson.Subject.Name}" IsEnabled="{Binding IsEnabled}">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding AfterLesson.Subject.IsWarning}"
+                                                         Value="True">
+                                                <Setter Property="Foreground" Value="Orange" />
+                                                <Setter Property="ToolTip" Value="Учитель не ведёт данный предмет"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <controls:AutoCompleteBox
+                                IsEnabled="{Binding IsEnabled}"
+                                ItemsSource="{Binding ElementName=EditDialog, Path=DataContext.Subjects, Mode=OneTime}"
+                                ValueMemberPath="Name"
+                                SelectedItem="{Binding AfterLesson.Subject, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <controls:AutoCompleteBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IsWarning}"
+                                                                     Value="True">
+                                                            <Setter Property="Foreground" Value="Orange" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </controls:AutoCompleteBox.ItemTemplate>
+                            </controls:AutoCompleteBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <!-- Teacher -->
+                <DataGridTemplateColumn Header="Учитель" IsReadOnly="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding AfterLesson.Teacher.Name}" IsEnabled="{Binding IsEnabled}">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding AfterLesson.Teacher.IsWarning}"
+                                                         Value="True">
+                                                <Setter Property="Foreground" Value="Orange" />
+                                                <Setter Property="ToolTip" Value="Учитель занят в это время"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <controls:AutoCompleteBox
+                                IsEnabled="{Binding IsEnabled}"
+                                ItemsSource="{Binding ElementName=EditDialog, Path=DataContext.Teachers, Mode=OneTime}"
+                                ValueMemberPath="Name"
+                                SelectedItem="{Binding AfterLesson.Teacher, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <controls:AutoCompleteBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IsWarning}"
+                                                                     Value="True">
+                                                            <Setter Property="Foreground" Value="Orange" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </controls:AutoCompleteBox.ItemTemplate>
+                            </controls:AutoCompleteBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <!-- Classroom -->
+                <DataGridTemplateColumn Header="Кабинет" IsReadOnly="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding AfterLesson.Classroom.Room}" IsEnabled="{Binding IsEnabled}">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding AfterLesson.Classroom.IsWarning}"
+                                                         Value="True">
+                                                <Setter Property="Foreground" Value="Orange" />
+                                                <Setter Property="ToolTip" Value="Кабинет занят в данное время"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <controls:AutoCompleteBox
+                                IsEnabled="{Binding IsEnabled}"
+                                ItemsSource="{Binding ElementName=EditDialog, Path=DataContext.Classrooms, Mode=OneTime}"
+                                ValueMemberPath="Room"
+                                SelectedItem="{Binding AfterLesson.Classroom, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <controls:AutoCompleteBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Room, UpdateSourceTrigger=PropertyChanged}">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IsWarning}"
+                                                                     Value="True">
+                                                            <Setter Property="Foreground" Value="Orange" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </controls:AutoCompleteBox.ItemTemplate>
+                            </controls:AutoCompleteBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <!-- IsEnabled -->
+                <DataGridCheckBoxColumn Header="Активна ли замена"
+                                        Binding="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}"
+                                        local:ColumnTag.Tag="IS_CHECKED" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Row="2" Grid.Column="0" Content="Отмена" IsCancel="True" />
+        <Button Grid.Row="2" Grid.Column="1" Content="Сохранить" IsDefault="True" Command="{Binding OkCommand}" />
+    </Grid>
+</Window>
